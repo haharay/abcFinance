@@ -11,7 +11,7 @@ class Accountant(abcEconomics.Agent):
     def __getattr__(self, attribute):
         if attribute in ['book_end_of_period', 'book', 'make_stock_accounts', 'make_flow_accounts',
                          'make_asset_accounts', 'make_liability_accounts', 'print_profit_and_loss',
-                         'print_balance_sheet', 'draw_balance_sheet', 'get_balance']:
+                         'print_balance_sheet', 'draw_balance_sheet', 'get_balance', 'booking_history','profit_history']:
             return getattr(self.accounts, attribute)
     
     def _autobook(self, msg):

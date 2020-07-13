@@ -3,7 +3,9 @@ from .account import Account, AccountSide
 from .svg_tools import Scene, Text, Textbox
 
 class Accountant(abcEconomics.Agent):
-    def __init__(self, residual_account_name='equity'):
+    def __init__(self, *param, **kwparam):
+        super().__init__(*param, **kwparam)
+        
         self.stock_accounts = {}
         self.flow_accounts = {}
         self.accounts = {}
@@ -12,8 +14,8 @@ class Accountant(abcEconomics.Agent):
         self.residual_account = None
         self.profit_history = []
         self.booking_history = []
-        self.residual_account_name = residual_account_name
-        self._make_residual_account(residual_account_name)
+        self.residual_account_name = kwparam.get('residual_account_name', '未分配利润')
+        self._make_residual_account(self.residual_account_name)
 
     def __getitem__(self, item):
         return self.accounts[item]

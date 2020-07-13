@@ -269,4 +269,3 @@ class Accountant(abcEconomics.Agent):
             plot.write_svg()
         
         return ' '.join(plot.strarray())
-© 2
